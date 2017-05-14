@@ -1,0 +1,11 @@
+D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\bin\Debug\MS_Form_Dotnet.exe.config
+D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.Form1.resources
+D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.csproj.GenerateResource.Cache
+D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\bin\Debug\MS_Form_Dotnet.exe
+D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\bin\Debug\MS_Form_Dotnet.pdb
+D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\bin\Debug\devcomponents.dotnetbar2.dll
+D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\bin\Debug\devcomponents.dotnetbar2.xml
+D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.Properties.Resources.resources
+D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.exe
+D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.pdb
+D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.csprojResolveAssemblyReference.cache
