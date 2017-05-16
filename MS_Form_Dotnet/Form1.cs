@@ -37,6 +37,7 @@ namespace MS_Form_Dotnet
         {
             InitializeComponent();
             tabHome.Select();
+          
             shape = "normal";//Set start shape is normal(pencil)
             this.MouseDown += Form1_MouseDown; ;
             this.MouseMove += Form1_MouseMove;
@@ -44,7 +45,8 @@ namespace MS_Form_Dotnet
             this.Paint += Form1_Paint;
 
             penleft.Color = btnLeft.SelectedColor;
-            penright.Color =btnRight.SelectedColor;// Set start color penright
+            penright.Color = btnRight.SelectedColor;// Set start color penright
+           
             _bm = new Bitmap(this.Width, this.Height);//Create bitmap to draw
             stack.Add((Bitmap)_bm.Clone());//Add first bitmap to stack
             _gp = Graphics.FromImage(_bm);//Draw from _bm
@@ -151,7 +153,7 @@ namespace MS_Form_Dotnet
                             gpPic.FillEllipse(sb, 0, 0, x, y);
                             break;
                         case "vuong":
-                            gpPic.FillRectangle(sb,0, 0, x, y); break;
+                            gpPic.FillRectangle(sb, 0, 0, x, y); break;
                         case "thoi":
                             int leng = _p2.X + _p1.X;
                             int leng2 = _p2.X - _p1.X;
@@ -177,7 +179,7 @@ namespace MS_Form_Dotnet
                             AddStack();//_gp.DrawLine(penleft, temp, _p2);
                             ptb.Visible = false; break;
                         case "text":  //Set position,properties for Text box    
-                           
+
                             tabText.Select();
                             ptb.Visible = false;
                             flagText = 1;
@@ -225,7 +227,7 @@ namespace MS_Form_Dotnet
                             AddStack();//gp.DrawLine(penleft,temp,_p2);
                             ptb.Visible = false; break;
                         case "text":
-                           
+
                             tabText.Select();
                             ptb.Visible = false;
                             flagText = 1;
@@ -236,9 +238,9 @@ namespace MS_Form_Dotnet
                             txtText.Visible = true;
                             txtText.Focus();
                             break;
-                    } 
+                    }
                 }
-               
+
             }
             ptb.Image = (Bitmap)bmPic.Clone();
             ptb.Focus();
@@ -322,6 +324,9 @@ namespace MS_Form_Dotnet
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            _bm = new Bitmap(this.Width, this.Height);//Create bitmap to draw
             btnLeft.SelectedColor = Color.Red;
             btnRight.SelectedColor = Color.Black;
             InitComboBoxSize();//Add item to combo box Size of line to draw shape
@@ -330,15 +335,19 @@ namespace MS_Form_Dotnet
                 cmbTextSize.Items.Add(i);
             }
             cmbTextSize.SelectedIndex = 4;
+
             foreach (FontFamily font in System.Drawing.FontFamily.Families)//Add item to combo box Font of text to draw string
             {
-                cmbFont.Items.Add(font.Name);
+                Label lb = new Label();
+                lb.Text = font.Name;
+                lb.Font = new Font(font.Name,12);
+                cmbFont.Items.Add(lb.Text);
             }
             cmbFont.SelectedIndex = 0;
-
+          
         }
 
-  
+
         private void AddStack() //ADD currently bitmap to stack to undo,redo
         {
             if (stack.Count > 10) //Check stack have more 10bitmap, remove for storage
@@ -425,7 +434,7 @@ namespace MS_Form_Dotnet
                     case "line": _gp.DrawLine(penleft, p1, p2); break;
                     //case "normal": ptb.Visible = false; break;
                     case "text":
-            
+
                         flagText = 1;
                         txtText.ForeColor = penleft.Color;
                         txtText.Location = new Point(p1.X, p1.Y);
@@ -565,7 +574,7 @@ namespace MS_Form_Dotnet
         {
             shape = "normal";
             PictureBox pb = new PictureBox() { Image = global::MS_Form_Dotnet.Properties.Resources.pen };
-            this.Cursor = new Cursor((new Bitmap(pb.Image,new Size(30,40)).GetHicon()));
+            this.Cursor = new Cursor((new Bitmap(pb.Image, new Size(30, 40)).GetHicon()));
             penleft.Color = btnLeft.SelectedColor;
         }
 
@@ -576,11 +585,6 @@ namespace MS_Form_Dotnet
             this.Cursor = new Cursor((new Bitmap(pb.Image, new Size(30, 40)).GetHicon()));
         }
 
-        private void Form1_SizeChanged(object sender, EventArgs e)
-        {
-            _bm = new Bitmap(_bm, this.Width, this.Height);
-        }
-
         private void btnText_Click(object sender, EventArgs e)
         {
             PictureBox pb = new PictureBox() { Image = global::MS_Form_Dotnet.Properties.Resources.font_png_image_23842 };
@@ -588,9 +592,9 @@ namespace MS_Form_Dotnet
             this.Cursor = new Cursor((new Bitmap(pb.Image, new Size(20, 20)).GetHicon()));
         }
 
-    
 
-       
+
+
 
         private void ptb_MouseMove(object sender, MouseEventArgs e)
         {
@@ -659,6 +663,102 @@ namespace MS_Form_Dotnet
                 myfont = new Font(cmbFont.Text, 10);
                 txtText.Font = myfont;
             }
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            if (position>0)
+            {
+                DialogResult dlr=MessageBox.Show("Bạn chưa lưu hình này, bạn muốn lưu không?", "New", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                if(dlr==DialogResult.Yes)
+                {
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.Filter = "Bmp (*.bmp)|*.bmp|Jpeg (*.jpeg)|*.jpeg|Jpg (*.jpg)|*.jpg|Png (*.png)|*.png";
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        _bm.Save(sfd.FileName);
+                        _bm = new Bitmap(this.Width, this.Height);
+                        _gp = Graphics.FromImage(_bm);
+                        this.Refresh();
+                        this.BackgroundImage = (Bitmap)_bm.Clone();
+                        position = 0;
+                        stack.RemoveRange(0, stack.Count);
+                    }
+
+                }
+                else if(dlr==DialogResult.No)
+                {
+                    _bm = new Bitmap(this.Width, this.Height);
+                    _gp = Graphics.FromImage(_bm);
+                    this.Refresh();
+                    this.BackgroundImage = (Bitmap)_bm.Clone();
+                    position = 0;
+                    stack.RemoveRange(0, stack.Count);
+                }
+            }
+            else
+            {
+                _bm = new Bitmap(this.Width, this.Height);
+                _gp = Graphics.FromImage(_bm);
+                this.Refresh();
+                this.BackgroundImage = (Bitmap)_bm.Clone();
+                position = 0;
+                stack.RemoveRange(0, stack.Count);
+            }
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image file (*.jpg,*.jpeg,*.png,*.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Image img = Image.FromFile(ofd.FileName);
+                _bm = new Bitmap(img.Width, img.Height);
+                _gp = Graphics.FromImage(_bm);
+                Rectangle rec = new Rectangle(0, 0, _bm.Width, _bm.Height);
+                _gp.DrawImage(img, rec);
+                this.Refresh();
+                this.BackgroundImage = (Bitmap)_bm.Clone();
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Bmp (*.bmp)|*.bmp|Jpeg (*.jpeg)|*.jpeg|Jpg (*.jpg)|*.jpg|Png (*.png)|*.png";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                _bm.Save(sfd.FileName);
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (position > 0)
+            {
+                DialogResult dlr = MessageBox.Show("Bạn chưa lưu hình này, bạn muốn lưu không?", "New", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dlr == DialogResult.Yes)
+                {
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.Filter = "Bmp (*.bmp)|*.bmp|Jpeg (*.jpeg)|*.jpeg|Jpg (*.jpg)|*.jpg|Png (*.png)|*.png";
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        this.Close();
+                    }
+
+                }
+               if (dlr == DialogResult.No)
+                {
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                Application.Exit();
+            }
+           
+
         }
     }
 }
