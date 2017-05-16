@@ -9,3 +9,13 @@ D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.Properties.Res
 D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.exe
 D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.pdb
 D:\Nhap VS\MS_Form_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.csprojResolveAssemblyReference.cache
+C:\Users\Billy\Documents\GitHub\Paint_Dotnet\MS_Form_Dotnet\bin\Debug\MS_Form_Dotnet.exe.config
+C:\Users\Billy\Documents\GitHub\Paint_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.exe
+C:\Users\Billy\Documents\GitHub\Paint_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.pdb
+C:\Users\Billy\Documents\GitHub\Paint_Dotnet\MS_Form_Dotnet\bin\Debug\MS_Form_Dotnet.exe
+C:\Users\Billy\Documents\GitHub\Paint_Dotnet\MS_Form_Dotnet\bin\Debug\MS_Form_Dotnet.pdb
+C:\Users\Billy\Documents\GitHub\Paint_Dotnet\MS_Form_Dotnet\bin\Debug\devcomponents.dotnetbar2.dll
+C:\Users\Billy\Documents\GitHub\Paint_Dotnet\MS_Form_Dotnet\bin\Debug\devcomponents.dotnetbar2.xml
+C:\Users\Billy\Documents\GitHub\Paint_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.Form1.resources
+C:\Users\Billy\Documents\GitHub\Paint_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.Properties.Resources.resources
+C:\Users\Billy\Documents\GitHub\Paint_Dotnet\MS_Form_Dotnet\obj\Debug\MS_Form_Dotnet.csproj.GenerateResource.Cache
